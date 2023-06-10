@@ -6,6 +6,15 @@
     "pages/finder/finder",
     "pages/404/404"
   ],
+  "subPackages": [
+    {
+      "root": "subpages",
+      "pages": [
+        "news/news",
+        "chat/chat"
+      ]
+    }
+  ],
   "window": {
     "navigationBarTextStyle": "black",
     "navigationBarTitleText": "uni-app",

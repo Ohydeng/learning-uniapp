@@ -10,6 +10,7 @@ const _sfc_main = {
     console.log("show in pages/index");
   },
   onLoad() {
+    console.log(getCurrentPages());
   },
   methods: {}
 };

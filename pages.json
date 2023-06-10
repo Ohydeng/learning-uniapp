@@ -9,7 +9,7 @@
 		},
     {
       "path" : "pages/list/list",
-      "style" :                                                                                    
+      "style" :             
       {
           "navigationBarTitleText": "通讯录",
           "enablePullDownRefresh": false
@@ -40,7 +40,28 @@
       }
     }
   ],
-	"globalStyle": {
+	"subPackages": [{
+    "root": "subpages",
+    "pages": [
+      {
+        "path": "news/news",
+        "style": {
+          "navigationBarTitleText": "新闻中心",
+          "enablePullDownRefresh": true
+        }
+      }
+        ,{
+                    "path" : "chat/chat",
+                    "style" :                                                                                    
+                {
+                    "navigationBarTitleText": "知心姐姐聊天",
+                    "enablePullDownRefresh": false
+                }
+                
+                }
+            ]
+  }],
+  "globalStyle": {
 		"navigationBarTextStyle": "black",
 		"navigationBarTitleText": "uni-app",
 		"navigationBarBackgroundColor": "#F8F8F8",

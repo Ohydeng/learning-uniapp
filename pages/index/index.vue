@@ -1,7 +1,11 @@
 <template>
 	<view class="content">
     <text>主页</text>
-    <navigator url="/pages/404/404">404页面</navigator>
+    <!-- <navigator url="/pages/404/404">404页面</navigator> -->
+    <view>
+      <navigator url="/subpages/chat/chat">前往知心姐姐聊天</navigator>
+    </view>
+
 	</view>
 </template>
 
@@ -16,7 +20,7 @@
       console.log("show in pages/index");
     },
 		onLoad() {
-
+      console.log(getCurrentPages());
 		},
 		methods: {
 
