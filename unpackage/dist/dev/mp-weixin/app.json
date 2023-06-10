@@ -1,0 +1,48 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/list/list",
+    "pages/me/me",
+    "pages/finder/finder",
+    "pages/404/404"
+  ],
+  "window": {
+    "navigationBarTextStyle": "black",
+    "navigationBarTitleText": "uni-app",
+    "navigationBarBackgroundColor": "#F8F8F8",
+    "backgroundColor": "#F8F8F8"
+  },
+  "tabBar": {
+    "color": "#7A7E83",
+    "selectedColor": "#3cc51f",
+    "borderStyle": "black",
+    "backgroundColor": "#ffffff",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "iconPath": "static/tabbar-icons/wx.png",
+        "selectedIconPath": "static/tabbar-icons/wx_s.png",
+        "text": "微信"
+      },
+      {
+        "pagePath": "pages/list/list",
+        "iconPath": "static/tabbar-icons/list.png",
+        "selectedIconPath": "static/tabbar-icons/list_s.png",
+        "text": "通讯录"
+      },
+      {
+        "pagePath": "pages/finder/finder",
+        "iconPath": "static/tabbar-icons/find.png",
+        "selectedIconPath": "static/tabbar-icons/find_s.png",
+        "text": "发现"
+      },
+      {
+        "pagePath": "pages/me/me",
+        "iconPath": "static/tabbar-icons/me.png",
+        "selectedIconPath": "static/tabbar-icons/me_s.png",
+        "text": "我"
+      }
+    ]
+  },
+  "usingComponents": {}
+}

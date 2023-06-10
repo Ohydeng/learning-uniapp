@@ -1,0 +1,1 @@
+<view class="content"><text>主页</text><navigator url="/pages/404/404">404页面</navigator></view>

@@ -1,0 +1,79 @@
+{
+	"pages": [ //pages数组中第一项表示应用启动页，参考：https://uniapp.dcloud.io/collocation/pages
+		{ // 主页面
+			"path": "pages/index/index",
+			"style": {
+				"navigationBarTitleText": "主页",
+        "enablePullDownRefresh": true
+			}
+		},
+    {
+      "path" : "pages/list/list",
+      "style" :                                                                                    
+      {
+          "navigationBarTitleText": "通讯录",
+          "enablePullDownRefresh": false
+      }
+    },
+    {
+      "path" : "pages/me/me",
+      "style" :
+      {
+          "navigationBarTitleText": "我",
+          "enablePullDownRefresh": false
+      }
+    },
+    {
+      "path" : "pages/finder/finder",
+      "style" :
+      {
+          "navigationBarTitleText": "发现",
+          "enablePullDownRefresh": false
+      }
+    },
+    {
+      "path" : "pages/404/404",
+      "style":
+      {
+          "navigationBarTitleText": "页面未找到",
+          "enablePullDownRefresh": true
+      }
+    }
+  ],
+	"globalStyle": {
+		"navigationBarTextStyle": "black",
+		"navigationBarTitleText": "uni-app",
+		"navigationBarBackgroundColor": "#F8F8F8",
+		"backgroundColor": "#F8F8F8"
+	},
+  "tabBar": {
+    "color": "#7A7E83",
+    "selectedColor": "#3cc51f",
+    "borderStyle": "black",
+    "backgroundColor": "#ffffff",
+    "list": [{
+      "pagePath": "pages/index/index",
+      "iconPath": "static/tabbar-icons/wx.png",
+      "selectedIconPath": "static/tabbar-icons/wx_s.png",
+      "text": "微信"
+      },{
+       "pagePath": "pages/list/list",
+       "iconPath": "static/tabbar-icons/list.png",
+       "selectedIconPath": "static/tabbar-icons/list_s.png",
+       "text": "通讯录"
+      },
+      {
+        "pagePath": "pages/finder/finder",
+        "iconPath": "static/tabbar-icons/find.png",
+        "selectedIconPath": "static/tabbar-icons/find_s.png",
+        "text": "发现"
+      },
+      {
+        "pagePath": "pages/me/me",
+        "iconPath": "static/tabbar-icons/me.png",
+        "selectedIconPath": "static/tabbar-icons/me_s.png",
+        "text": "我"
+      }]
+  },
+	"uniIdRouter": {}
+}
