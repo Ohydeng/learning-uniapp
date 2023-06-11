@@ -41,7 +41,8 @@
     data() {
       return {
         // 保存聊天的内容
-        chatList:[{
+        chatList:[
+          {
           isMe: false,
           type: 'txt',
           content: '你好，我是知心姐姐，请问你想和我聊什么呢？'
@@ -57,26 +58,35 @@
           isMe: true,
           type: 'img',
           content: '/static/images/2.jpg'
-        }],
-        
+        },
+        ],
         myInput: ""
       }
     },
     
-    
+    onShow(){
+      
+      if(!uni.getStorageSync('chatList')){
+        this.chatList = JSON.stringify(uni.getStorageSync('chatList'))
+      }
+      let timer = setTimeout(() => {
+        clearTimeout(timer)
+        uni.pageScrollTo({
+            scrollTop: 99999,
+            duration: 0
+        })
+      })
+    }, 
     
     methods: {
-        
       choseImgAndSend(){
-        console.log("1111");
+
         uni.chooseImage({
           count:1,
           sizeType:['original', 'compressed'],
           sourceType:['album', 'camera'],
             
           success: res => {
-            console.log(res.tempFilePaths[0]);
-            
             let senMsg = {
               isMe:true,
               type:'img',
@@ -90,16 +100,47 @@
               content: res.tempFilePaths[0]
             }
             this.chatList.push(resMsg)
-            
-            uni.pageScrollTo({
-                scrollTop: 9999,
-                duration: 0
+            let timer = setTimeout(() => {
+              clearTimeout(timer)
+              uni.pageScrollTo({
+                  scrollTop: 99999,
+                  duration: 0
+              })
             })
-            
+
             uni.setStorageSync('chatList', JSON.stringify(this.chatList))
           }
         })
+      },
+      
+      sendMsg(){
+        if(!this.myInput) return
+        let senMsg = {
+          isMe:true,
+          type:'txt',
+          content: this.myInput
+        }
+        this.chatList.push(senMsg)
+        
+        let resMsg = {
+          isMe:false,
+          type:'txt',
+          content: this.myInput
+        }
+        this.chatList.push(resMsg)
+        
+        this.myInput = ''
+        
+        uni.setStorageSync('chatList', JSON.stringify(this.chatList))
+        let timer = setTimeout(() => {
+          clearTimeout(timer)
+          uni.pageScrollTo({
+              scrollTop: 99999,
+              duration: 0
+          })
+        })
       }
+      
     }
   }
 </script>
