@@ -1,11 +1,7 @@
 "use strict";
 const _imports_0 = "/static/faces/you.png";
-const _imports_1 = "/static/images/1.jpg";
-const _imports_2 = "/static/images/2.jpg";
-const _imports_3 = "/static/faces/me.png";
-const _imports_4 = "/static/img.png";
+const _imports_1 = "/static/faces/me.png";
+const _imports_2 = "/static/img.png";
 exports._imports_0 = _imports_0;
 exports._imports_1 = _imports_1;
 exports._imports_2 = _imports_2;
-exports._imports_3 = _imports_3;
-exports._imports_4 = _imports_4;

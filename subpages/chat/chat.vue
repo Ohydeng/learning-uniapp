@@ -1,44 +1,35 @@
 <template>
   <view class="container">
+    
     <!-- 聊天列表 -->
     <view class="chat-body">
-      <view class="chat-one">
-        <image class="chat-face" src="@/static/faces/you.png"></image>
-        <view class="chat-box">
-          <view class="chat-sender">知心姐姐</view>
-          <view class="chat-content">你好，我是知心姐姐，请问你想和我聊什么呢？</view>
+      <block v-for="(item, index) in chatList" :key="index">
+        
+        <view class="chat-one" v-if="!item.isMe">
+          <image class="chat-face" src="@/static/faces/you.png"></image>
+          <view class="chat-box">
+            <view class="chat-sender">知心姐姐</view>
+            <view class="chat-content" v-if="item.type === 'txt'">{{item.content}}</view>
+            <image class="chat-img" v-if="item.type === 'img'" :src="item.content" mode="widthFix"></image>
+          </view>
         </view>
-      </view>
-      
-      <view class="chat-one">
-        <image class="chat-face" src="@/static/faces/you.png"></image>
-        <view class="chat-box">
-          <view class="chat-sender">知心姐姐</view>
-          <image class="chat-img" src="@/static/images/1.jpg" mode="widthFix"></image>
+        
+        <view class="chat-one chat-one-mine" v-else>
+          <view class="chat-box">
+            <view class="chat-content" v-if="item.type === 'txt'">{{item.content}}</view>
+            <image class="chat-img" v-if="item.type === 'img'" :src="item.content" mode="widthFix"></image>
+          </view>
+          <image class="chat-face" src="@/static/faces/me.png"></image>
         </view>
-      </view>
-      
-      <view class="chat-one chat-one-mine">
-        <view class="chat-box">
-          <view class="chat-content">哇， 你真漂亮</view>
-        </view>
-        <image class="chat-face" src="@/static/images/2.jpg"></image>
-      </view>
-      
-      <view class="chat-one chat-one-mine">
-        <view class="chat-box">
-          <image class="chat-img" src="@/static/images/2.jpg" mode="widthFix"></image>
-        </view>
-        <image class="chat-face" src="@/static/faces/me.png"></image>
-      </view>
-      
+        
+      </block>
     </view>
     
     <!-- 聊天输入 -->
     <view class="chat-footer">
-      <input class="msg-input" type="text" cursor-spacing="16">
-      <image class="img-chose" src="@/static/img.png"></image>
-      <view class="send-btn">
+      <input class="msg-input" type="text" cursor-spacing="16" v-model="myInput">
+      <image class="img-chose" src="@/static/img.png" @click="choseImgAndSend"></image>
+      <view class="send-btn" @click="sendMsg">
         发送
       </view>
     </view>
@@ -49,11 +40,66 @@
   export default {
     data() {
       return {
+        // 保存聊天的内容
+        chatList:[{
+          isMe: false,
+          type: 'txt',
+          content: '你好，我是知心姐姐，请问你想和我聊什么呢？'
+        },{
+          isMe: false,
+          type: 'img',
+          content: '/static/images/1.jpg'
+        },{
+          isMe: true,
+          type: 'txt',
+          content: '哇，你真漂亮'
+        },{
+          isMe: true,
+          type: 'img',
+          content: '/static/images/2.jpg'
+        }],
         
+        myInput: ""
       }
     },
+    
+    
+    
     methods: {
-      
+        
+      choseImgAndSend(){
+        console.log("1111");
+        uni.chooseImage({
+          count:1,
+          sizeType:['original', 'compressed'],
+          sourceType:['album', 'camera'],
+            
+          success: res => {
+            console.log(res.tempFilePaths[0]);
+            
+            let senMsg = {
+              isMe:true,
+              type:'img',
+              content: res.tempFilePaths[0]
+            }
+            this.chatList.push(senMsg)
+            
+            let resMsg = {
+              isMe:false,
+              type:'img',
+              content: res.tempFilePaths[0]
+            }
+            this.chatList.push(resMsg)
+            
+            uni.pageScrollTo({
+                scrollTop: 9999,
+                duration: 0
+            })
+            
+            uni.setStorageSync('chatList', JSON.stringify(this.chatList))
+          }
+        })
+      }
     }
   }
 </script>
