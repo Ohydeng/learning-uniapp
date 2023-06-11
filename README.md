@@ -18,6 +18,6 @@
   
   `{{msg}}`
   
-  `props:[msg]`
+  `props:['msg']`
  
  
