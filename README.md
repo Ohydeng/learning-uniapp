@@ -1,4 +1,4 @@
-﻿# learning-uniapp
+﻿# learning-uniapp学习记录
 ## 2023.6.10 
 
 ### 1）路由配置，页面跳转，tabbar
